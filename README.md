@@ -1,7 +1,7 @@
 #GPS
 
 ## Package.
-The manin Namespace is com.progress.demo.rce.gps
+The main Namespace is com.progress.demo.rce.gps
 
 ## Events.
 
@@ -11,6 +11,6 @@ The manin Namespace is com.progress.demo.rce.gps
 
 * **NewSim**(integer, float, float). It starts the internal gps-simulator. The integer represents the client Id, the first float represents the maximum allowed value of the X-axis and the second float represents the maximum allowed value in the Y-axis.
 
-* **Alert(NewPOI, integer, Position). It alerts about the POI, with its id integer and the client position.
+* **Alert**(NewPOI, integer, Position). It alerts about the POI, with its id integer and the client position.
 
 
