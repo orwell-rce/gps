@@ -1,0 +1,34 @@
+package com.progress.demo.rce.gps;
+using com.progress.demo.rce.gps.input.NewPOI;
+using com.progress.demo.rce.gps.input.Position;
+using com.progress.demo.rce.gps.middle.Alert;
+
+
+monitor mainGPS{
+	
+	NewPOI poi;
+	Position Pos;
+	dictionary<string, boolean> poiDB;
+	
+	action onload() {
+		on all NewPOI():poi {
+			if not poiDB.hasKey(poi.name) then{
+				poiDB.add(poi.name, true);
+				integer poiID := integer.getUnique();
+				spawn POI(poi, poiID);
+			}
+		}
+	}
+	
+	action POI(NewPOI poi, integer id) {
+		log "Montior for: " + poi.name;
+		
+		on all Position():Pos{
+			if (Pos.pos.inside(poi.pos)) then {
+				route Alert(poi, id, Pos);
+			}
+		}
+	}
+}
+
+

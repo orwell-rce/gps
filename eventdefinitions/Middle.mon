@@ -1,0 +1,21 @@
+//*****************************************************************************
+// Title:         Operation
+// Description:   Operation description
+// Dependencies:  None
+// Author:        carlos
+//
+//*****************************************************************************
+
+package com.progress.demo.rce.gps.middle;
+
+event Alert{
+	com.progress.demo.rce.gps.input.NewPOI poi;
+	integer idPOI;
+	com.progress.demo.rce.gps.input.Position pos;
+}
+
+event NewSim{
+	integer id;
+	float limX;
+	float limY;
+}

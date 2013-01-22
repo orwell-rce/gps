@@ -1,0 +1,25 @@
+package com.progress.demo.rce.gps.simulator;
+using com.progress.demo.rce.gps.input.Position;
+using com.progress.demo.rce.gps.middle.NewSim;
+
+monitor simulator{
+	float pX;
+	float pY;
+	location l;
+	NewSim sim;
+	
+	action onload() {
+		on all NewSim():sim{
+			spawn simulate(sim.id, sim.limX, sim.limY);
+		}
+	}
+	
+	action simulate(integer id, float lX, float lY) {
+		on all wait(3.0) {
+			pX := lX.rand();
+			pY := lY.rand();
+			l := location(pX, pY, pX, pY);
+			route Position(sim.id, l);
+		}
+	}
+}

@@ -9,18 +9,5 @@
 		<catalog path="catalogs/gps functions" type="function"/>
 	</catalogs>
 	<bundles>
-		<bundle file="ScenarioService.bnd" origin="PRODUCT_CATALOG" origin-path="">
-			<instance name=""/>
-			<config-files>
-			</config-files>
-			<bundle-instance-files>
-			</bundle-instance-files>
-			<static-files>
-			</static-files>
-			<dashboard-files>
-			</dashboard-files>
-			<evt-files>
-			</evt-files>
-		</bundle>
 	</bundles>
 </apama-project>

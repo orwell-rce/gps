@@ -1,0 +1,219 @@
+VERS 00000001 4
+HEAD 00000fb9 <?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="/resources/transform.xslt"?><header><componentName>correlator</componentName><version>5.0.0.0</version><build>rel/5.0.0.x@191967</build><buildPlatform>ia32-win32-msvc9</buildPlatform><platform>Windows 7 (Service Pack 1)</platform><cputype>GenuineIntel family 6 model 10 stepping 7        Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz</cputype><cpus>4</cpus><javaEnabled>true</javaEnabled><replayLogMode>replayLog</replayLogMode><args><arg>C:\Program Files\Progress\Apama 5.0\bin\correlator.exe</arg><arg>--logQueueSizePeriod</arg><arg>0</arg><arg>-l</arg><arg>C:\Users\carlos\Progress\ApamaWork_5.0\license\license.txt</arg><arg>--port</arg><arg>15903</arg><arg>--loglevel</arg><arg>INFO</arg><arg>--name</arg><arg>Apama Studio Correlator for gps(gps:Default Correlator)</arg><arg>-j</arg><arg>--replayLog</arg><arg>logs/Default_Correlator_${START_TIME}_${ID}.replay.log</arg></args><environment><variable>ALLUSERSPROFILE=C:\ProgramData</variable><variable>APAMA_HOME=C:\Program Files\Progress\Apama 5.0</variable><variable>APPDATA=C:\Users\carlos\AppData\Roaming</variable><variable>ARISGEHOME10=C:\Program Files\ARIS7.1\server\serviceenabling</variable><variable>ARISHOME71=C:\Program Files\ARIS7.1\</variable><variable>COMMONPROGRAMFILES=C:\Program Files\Common Files</variable><variable>COMPUTERNAME=CARLOS-PC</variable><variable>COMSPEC=C:\windows\system32\cmd.exe</variable><variable>FP_NO_HOST_CHECK=NO</variable><variable>HOMEDRIVE=C:</variable><variable>HOMEPATH=\Users\carlos</variable><variable>JCE_POLICY_ZIP=C:\Users\carlos\Downloads\jce_policy-1_5_0.zip</variable><variable>LOCALAPPDATA=C:\Users\carlos\AppData\Local</variable><variable>LOGONSERVER=\\CARLOS-PC</variable><variable>NUMBER_OF_PROCESSORS=4</variable><variable>OS=Windows_NT</variable><variable>PATH=C:\Program Files\Progress\Apama 5.0\third_party\jre\bin\server;C:\Program Files\Progress\Apama 5.0\third_party\jre\bin;C:\Program Files\Progress\Apama 5.0\third_party\jre\bin\server;C:\Program Files\Progress\Apama 5.0\third_party\jre\bin;C:\Program Files\Progress\Apama 5.0\bin;C:\Program Files\SAP\IDE\IDE70\eclipse;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Windows Live\Shared;C:\Program Files\Toshiba\Bluetooth Toshiba Stack\sys\;C:\Program Files\MiKTeX 2.9\miktex\bin\;C:\Program Files\ARIS7.1;C:\Program Files\Java\jdk1.6.0_25\bin;C:\Program Files\nodejs\;C:\Program Files\Google\google_appengine\;C:\Program Files\Java\jdk1.6.0_25\bin;C:\Users\carlos\AppData\Roaming\npm\</variable><variable>PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</variable><variable>PLMVIS_61_LIBPATH=C:\Program Files\SAP\FrontEnd\SapGui</variable><variable>PROCESSOR_ARCHITECTURE=x86</variable><variable>PROCESSOR_IDENTIFIER=x86 Family 6 Model 42 Stepping 7, GenuineIntel</variable><variable>PROCESSOR_LEVEL=6</variable><variable>PROCESSOR_REVISION=2a07</variable><variable>PROGRAMDATA=C:\ProgramData</variable><variable>PROGRAMFILES=C:\Program Files</variable><variable>PROMPT=$P$G</variable><variable>PSMODULEPATH=C:\windows\system32\WindowsPowerShell\v1.0\Modules\</variable><variable>PUBLIC=C:\Users\Public</variable><variable>SAP_DIR_PERF=C:\usr\sap\PRFCLOG</variable><variable>SESSIONNAME=Console</variable><variable>SSH_AGENT_PID=1444</variable><variable>SSH_AUTH_SOCK=/tmp/ssh-bbcbTu3016/agent.3016</variable><variable>SYSTEMDRIVE=C:</variable><variable>SYSTEMROOT=C:\windows</variable><variable>TEMP=C:\Users\carlos\AppData\Local\Temp</variable><variable>TMP=C:\Users\carlos\AppData\Local\Temp</variable><variable>USERDOMAIN=carlos-PC</variable><variable>USERNAME=carlos</variable><variable>USERPROFILE=C:\Users\carlos</variable><variable>WINDIR=C:\windows</variable><variable>WINDOWS_TRACING_FLAGS=3</variable><variable>WINDOWS_TRACING_LOGFILE=C:\BVTBin\Tests\installpackage\csilogfile.log</variable></environment><version>5.0.0.0</version></header>
+RAND 0000000a 1672849426
+TIME 00000010 1358882514.963,1
+CONN 0000003c 7184304843106360150/7184304843106360150 from 127.0.0.1:54221
+TIME 0000000e 1358882515.3,1
+MONF 000001ab //*****************************************************************************
+// Title:         Input
+// Description:   Input description
+// Dependencies:  None
+// Author:        carlos
+//
+//*****************************************************************************
+
+package com.progress.demo.rce.gps.input;
+
+event NewPOI{
+	string name;
+	location pos;
+}
+
+event Position{
+	integer id;
+	location pos;
+}
+
+ 00000060 C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\eventdefinitions\Input.mon
+RMDT 00000015 &INPUT(1,2,true,true)
+MONF 0000020b //*****************************************************************************
+// Title:         Operation
+// Description:   Operation description
+// Dependencies:  None
+// Author:        carlos
+//
+//*****************************************************************************
+
+package com.progress.demo.rce.gps.middle;
+
+event Alert{
+	com.progress.demo.rce.gps.input.NewPOI poi;
+	integer idPOI;
+	com.progress.demo.rce.gps.input.Position pos;
+}
+
+event NewSim{
+	integer id;
+	float limX;
+	float limY;
+}
+ 00000061 C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\eventdefinitions\Middle.mon
+RMDT 00000015 &INPUT(1,2,true,true)
+MONF 00000210 //*****************************************************************************
+// Title:         Alert
+// Description:   Alert description
+// Dependencies:  None
+// Author:        carlos
+//
+//*****************************************************************************
+
+package com.progress.demo.rce.gps;
+using com.progress.demo.rce.gps.middle.Alert;
+
+monitor alerts{
+	
+	Alert alert;
+	
+	action onload() {
+		on all Alert():alert{
+			print alert.pos.id.toString() + " inside of " + alert.poi.name;
+		}
+	}
+}
+ 00000059 C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\monitors\Alerts.mon
+RMDT 00000015 &INPUT(1,1,true,true)
+MONF 00000206 package com.progress.demo.rce.gps.simulator;
+using com.progress.demo.rce.gps.input.Position;
+using com.progress.demo.rce.gps.middle.NewSim;
+
+monitor simulator{
+	float pX;
+	float pY;
+	location l;
+	NewSim sim;
+	
+	action onload() {
+		on all NewSim():sim{
+			spawn simulate(sim.id, sim.limX, sim.limY);
+		}
+	}
+	
+	action simulate(integer id, float lX, float lY) {
+		on all wait(3.0) {
+			pX := lX.rand();
+			pY := lY.rand();
+			l := location(pX, pY, pX, pY);
+			route Position(sim.id, l);
+		}
+	}
+}
+ 0000005c C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\monitors\Simulator.mon
+RMDT 00000015 &INPUT(1,1,true,true)
+MONF 00000135 //*****************************************************************************
+// Title:         Output
+// Description:   Output description
+// Dependencies:  None
+// Author:        carlos
+//
+//*****************************************************************************
+
+package rce.gps.output;
+
+ 00000061 C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\eventdefinitions\Output.mon
+RMDT 00000015 &INPUT(1,0,true,true)
+MONF 000002a6 package com.progress.demo.rce.gps;
+using com.progress.demo.rce.gps.input.NewPOI;
+using com.progress.demo.rce.gps.input.Position;
+using com.progress.demo.rce.gps.middle.Alert;
+
+
+monitor mainGPS{
+	
+	NewPOI poi;
+	Position Pos;
+	dictionary<string, boolean> poiDB;
+	
+	action onload() {
+		on all NewPOI():poi {
+			if not poiDB.hasKey(poi.name) then{
+				poiDB.add(poi.name, true);
+				integer poiID := integer.getUnique();
+				spawn POI(poi, poiID);
+			}
+		}
+	}
+	
+	action POI(NewPOI poi, integer id) {
+		log "Montior for: " + poi.name;
+		
+		on all Position():Pos{
+			if (Pos.pos.inside(poi.pos)) then {
+				route Alert(poi, id, Pos);
+			}
+		}
+	}
+}
+
+
+ 0000005a C:\Users\carlos\Progress\ApamaWork_5.0\studio_workspace\github_ws\gps\monitors\MainGPS.mon
+RMDT 00000015 &INPUT(1,1,true,true)
+EVNT 00000047 7184304843106360150 com.progress.demo.rce.gps.middle.NewSim( 1, 10,10 )
+TIME 0000000e 1358882529.7,1
+RMDT 00000015 &INPUT(1,1,true,true)
+TIME 0000000e 1358882529.8,1
+TIME 0000000e 1358882532.7,1
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,0)
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,1)
+TIME 0000000e 1358882535.7,1
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,2)
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,3)
+TIME 0000000e 1358882538.7,1
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,4)
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,5)
+TIME 0000000e 1358882541.7,1
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,6)
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,7)
+TIME 0000000e 1358882544.7,1
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,8)
+RMDT 0000001e &REPLAY_ID("RandomNumber",1,9)
+TIME 0000000e 1358882547.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,10)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,11)
+TIME 0000000e 1358882550.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,12)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,13)
+TIME 0000000e 1358882553.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,14)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,15)
+TIME 0000000e 1358882556.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,16)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,17)
+TIME 0000000e 1358882559.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,18)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,19)
+TIME 0000000e 1358882562.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,20)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,21)
+EVNT 0000004c 7184304843106360150 com.progress.demo.rce.gps.input.NewPOI( 1, (0,0,20,20) )
+TIME 0000000e 1358882565.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,22)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,23)
+TIME 0000000e 1358882568.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,24)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,25)
+TIME 0000000e 1358882571.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,26)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,27)
+TIME 0000000e 1358882574.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,28)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,29)
+TIME 0000000e 1358882577.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,30)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,31)
+TIME 0000000e 1358882580.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,32)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,33)
+EVNT 00000051 7184304843106360150 com.progress.demo.rce.gps.input.NewPOI( "oxxo", (0,0,20,20) )
+TIME 0000000e 1358882581.1,1
+RMDT 00000015 &INPUT(1,1,true,true)
+RMDT 00000023 &REPLAY_ID("Integer.getUnique",1,0)
+TIME 0000000e 1358882583.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,34)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,35)
+TIME 0000000e 1358882586.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,36)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,37)
+TIME 0000000e 1358882589.7,1
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,38)
+RMDT 0000001f &REPLAY_ID("RandomNumber",1,39)
