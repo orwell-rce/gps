@@ -1,12 +1,12 @@
 package com.progress.demo.rce.gps;
-using com.progress.demo.rce.gps.output.Alert;
+using com.progress.demo.rce.gps.output.AlertPOI;
 
 monitor alerts{
 	
-	Alert alert;
+	AlertPOI alert;
 	
 	action onload() {
-		on all Alert():alert{
+		on all AlertPOI():alert{
 			print alert.pos.id.toString() + " inside of " + alert.poi.name;
 		}
 	}

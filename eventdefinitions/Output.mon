@@ -1,6 +1,6 @@
 package com.progress.demo.rce.gps.output;
 
-event Alert{
+event AlertPOI{
 	com.progress.demo.rce.gps.input.NewPOI poi;
 	integer idPOI;
 	com.progress.demo.rce.gps.input.Position pos;
