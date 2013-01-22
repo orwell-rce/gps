@@ -1,11 +1,3 @@
-//*****************************************************************************
-// Title:         Input
-// Description:   Input description
-// Dependencies:  None
-// Author:        carlos
-//
-//*****************************************************************************
-
 package com.progress.demo.rce.gps.input;
 
 event NewPOI{

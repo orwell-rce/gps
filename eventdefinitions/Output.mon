@@ -1,10 +1,7 @@
-//*****************************************************************************
-// Title:         Output
-// Description:   Output description
-// Dependencies:  None
-// Author:        carlos
-//
-//*****************************************************************************
+package com.progress.demo.rce.gps.output;
 
-package rce.gps.output;
-
+event Alert{
+	com.progress.demo.rce.gps.input.NewPOI poi;
+	integer idPOI;
+	com.progress.demo.rce.gps.input.Position pos;
+}

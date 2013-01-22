@@ -1,13 +1,5 @@
-//*****************************************************************************
-// Title:         Alert
-// Description:   Alert description
-// Dependencies:  None
-// Author:        carlos
-//
-//*****************************************************************************
-
 package com.progress.demo.rce.gps;
-using com.progress.demo.rce.gps.middle.Alert;
+using com.progress.demo.rce.gps.output.Alert;
 
 monitor alerts{
 	

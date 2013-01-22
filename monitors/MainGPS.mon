@@ -1,7 +1,7 @@
 package com.progress.demo.rce.gps;
 using com.progress.demo.rce.gps.input.NewPOI;
 using com.progress.demo.rce.gps.input.Position;
-using com.progress.demo.rce.gps.middle.Alert;
+using com.progress.demo.rce.gps.output.Alert;
 
 
 monitor mainGPS{
