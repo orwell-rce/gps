@@ -1,0 +1,37 @@
+package com.progress.demo.rce.gps;
+using com.progress.demo.rce.gps.input.NewPOI;
+using com.progress.demo.rce.gps.middle.Position;
+using com.progress.demo.rce.streams.Stream;
+
+
+monitor mainGPS{
+	
+	NewPOI poi;
+	Position Pos;
+	dictionary<string, boolean> poiDB;
+	
+	action onload() {
+		on all NewPOI():poi {
+			if not poiDB.hasKey(poi.name) then{
+				poiDB.add(poi.name, true);
+				spawn POI(poi, poi.id);
+			}
+		}
+	}
+	
+	action POI(NewPOI poi, integer idPOI) {
+		log "Montior for: " + poi.name;
+		sequence<string> extra := new sequence<string>;
+		
+		on all Position():Pos{
+			if (Pos.pos.inside(poi.pos)) then {
+				extra.append(poi.pos.toString());
+				extra.append(Pos.pos.toString());
+				route Stream("GPS", idPOI, Pos.id, extra);
+			}
+		}
+		
+	}
+}
+
+

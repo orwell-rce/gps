@@ -5,3 +5,8 @@ event NewSim{
 	float limX;
 	float limY;
 }
+
+event Position{
+	integer id;
+	location pos;
+}

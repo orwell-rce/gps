@@ -1,12 +1,8 @@
 package com.progress.demo.rce.gps.input;
 
 event NewPOI{
-	string name;
-	location pos;
-}
-
-event Position{
 	integer id;
+	string name;
 	location pos;
 }
 

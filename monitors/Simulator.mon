@@ -1,5 +1,5 @@
 package com.progress.demo.rce.gps.simulator;
-using com.progress.demo.rce.gps.input.Position;
+using com.progress.demo.rce.gps.middle.Position;
 using com.progress.demo.rce.gps.middle.NewSim;
 
 monitor simulator{
