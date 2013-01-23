@@ -21,10 +21,10 @@ monitor mainGPS{
 	
 	action POI(NewPOI poi) {
 		log "Montior for: " + poi.name;
-		sequence<string> extra := new sequence<string>;
 		
 		on all Position():Pos{
 			if (Pos.pos.inside(poi.pos)) then {
+				sequence<string> extra := new sequence<string>;
 				extra.append(poi.pos.toString()); //POI position
 				extra.append(Pos.pos.toString()); //Client position
 				route Stream("GPS", poi.id, Pos.id, extra);
